@@ -1,0 +1,12 @@
+{
+    "prefix":"ix!",
+    "options":{
+        "welcomepeople":true
+    },
+    "commands":[
+        "amihandsome",
+        "help",
+        "list",
+        "ping"
+    ]
+}
