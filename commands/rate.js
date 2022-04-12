@@ -1,18 +1,18 @@
 const { clean } = require('../utils');
 
 module.exports = {
-    name: "rate",
-    access: "ingame",
+    name: 'rate',
+    access: 'ingame',
     execute(client, args, uuid) {
 
         let thing2rate;
 
         switch (args[0]) {
-            case "you":
-                thing2rate = "myself";
+            case 'you':
+                thing2rate = 'myself';
                 break;
-            case "me":
-                thing2rate = "you";
+            case 'me':
+                thing2rate = 'you';
                 break;
             default:
                 thing2rate = args.join(' ');

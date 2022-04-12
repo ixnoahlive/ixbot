@@ -4,10 +4,10 @@ const config = require('./config.json');
 const cmdgreet = require('./resources/greetings.json');
 const credentials = require('./credentials.json');
 
-const commandsdir = fs.readdirSync("./commands").filter(file => file.endsWith('.js'));
+const commandsdir = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 const client = kc.createClient({
-    host: "freedom.play.totalfreedom.me",
+    host: 'freedom.play.totalfreedom.me',
     port: 25565,
     username: credentials.email,
     password: credentials.pass,
@@ -22,9 +22,9 @@ for (const file of commandsdir) {
 }
 
 
-client.on("login", () => {
-    client.chat("/me &bis currently a &6bot&b. Type &aix!help&b for help.");
-    client.chat("/tag set &8[&eBot&8]");
+client.on('login', () => {
+    client.chat('/me &bis currently a &6bot&b. Type &aix!help&b for help.');
+    client.chat('/tag set &8[&eBot&8]');
 
     client.on('player_join', function (player) {
         if (!config.welcomepeople) return;
@@ -32,7 +32,7 @@ client.on("login", () => {
     });
 });
 
-client.on("parsed_chat", (message, uuid) => {
+client.on('parsed_chat', (message, uuid) => {
     if (uuid === client._client.uuid) return; // Checks if the message is from the bot
 
     const matches = message.match(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» (?:§(?:#[a-fA-F0-9]{6}|.))+(.+)/); //tfw i have to use REGEX to parse chat messages (I blame totalfreedom)

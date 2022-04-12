@@ -1,6 +1,6 @@
 module.exports = {
-    name: "guidelines",
-    access: "public",
+    name: 'guidelines',
+    access: 'public',
     execute(client, args, uuid) {
         client.chat(`/msg ${uuid} ixBot Rules`);
         client.chat(`/msg ${uuid} By using the bot you agree to the guidelines below:`);

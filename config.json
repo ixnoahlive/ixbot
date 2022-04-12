@@ -1,9 +1,9 @@
 {
-    "prefix":"ix!",
-    "options":{
-        "welcomepeople":false
+    "prefix": "ix!",
+    "options": {
+        "welcomepeople": false
     },
-    "blacklist":[
+    "blacklist": [
         "e8c075c1-9916-4b97-a5e8-5f62a58b3579"
     ]
 }
