@@ -1,4 +1,4 @@
-# ixbot
+# <img src="https://cdn.discordapp.com/attachments/878545066845700106/963399481158668348/ixbotlogo.png" height="35"> ixbot
 
 A variety Minecraft bot mainly used for in-game chat.
 
