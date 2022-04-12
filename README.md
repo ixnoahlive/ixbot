@@ -2,6 +2,8 @@
 
 A variety Minecraft bot mainly used for in-game chat.
 
+[Join our development server!](https://discord.gg/hJ34ZpMtbB)
+
 ## Installation
 
 There currently aren't any plans for an official executable or release, so you will have to install the zip and all of the dependencies.
