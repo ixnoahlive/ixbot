@@ -50,10 +50,11 @@ var command = "fail"
 client.on("parsed_chat", (message, uuid) => {
     // Checks if commands are off, if the message is from the bot, and if it doesnt contains the prefix. If any is met it will return.
     if (!cmdoff || uuid=="58583751-5da7-46fa-834b-1e82c75295fb" || !message.includes(config.prefix)) return;
-    if ( uuid.replace('-', '') == "0000000000000000000000000000000" && message.startsWith('§dWelcome ') ) {
+    if (config.blacklist.includes(uuid)) { client.chat(`/msg ${client.players[uuid].name} You are blacklisted.`);return }
+    /*if ( uuid.replace('-', '') == "0000000000000000000000000000000" && message.startsWith('§dWelcome ') ) {
         let name = message.split(' ')
         client.chat(`@${name[2]} Make sure to read /rules and enjoy your stay!`)
-    }
+    }*/
     cmdoff = true
     if (!message
         .replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /i, '')
@@ -64,13 +65,16 @@ client.on("parsed_chat", (message, uuid) => {
     command = message.replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /i, '')
     .replace(/§+[a-z]|§+[0-9]/i, '').split(' ')
     command = command[0].replace('ix!','')
-    if (config.blacklist.includes(uuid)) { client.chat(`/msg ${client.players[uuid].name} You are blacklisted.`);return }
-
-    if (publiccommands.hasOwnProperty(command)) {
-        publiccommands[command].execute(message.replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /, '').replace(/§+[A-z]|§+[0-9]/, ''), uuid, client)
-    } else {
-       return
+    var lovely = message.replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /, '').replace(/§+[A-z]|§+[0-9]/, '')
+    if (uuid=="0000000000000000000000000000000" && message.startsWith('§8[§3Discord§8]')) {
+       command = message.split(/: (.*)/s)
+       command = command[1].replace('ix!','')
+       lovely = message.split(/: (.*)/s)
     }
+    if (publiccommands.hasOwnProperty(command)) {
+        if (uuid=="0000000000000000000000000000000" && publiccommands[command].access=="ingame") {client.chat('This command is unavailable for Discord users.');return}
+        publiccommands[command].execute(lovely, uuid, client)
+    } else return
     setTimeout(function() {
         cmdoff = true;
     }, 2000);

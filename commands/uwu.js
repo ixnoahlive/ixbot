@@ -1,6 +1,6 @@
 module.exports = {
     name: "uwu",
-    access: "public",
+    access: "ingame",
     execute(message, uuid, client){
         var actions = ["*blushes*","*whispers to self*","*cries*","*screams*","*sweats*","*twerks*","*runs away*","*screeches*","*walks away*","*sees bulge*","*looks at you*","*notices buldge*","*starts twerking*","*huggles tightly*","*boops your nose*",]
         var faces = ["(・`ω´・)",";;w;;","OwO","UwU",">w<","^w^","ÚwÚ","^-^"," :3"," x3",]

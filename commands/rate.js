@@ -1,6 +1,6 @@
 module.exports = {
     name: "rate",
-    access: "public",
+    access: "ingame",
     execute(message, uuid, client){
         switch (message) {
             case "you":
