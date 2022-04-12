@@ -21,13 +21,8 @@ module.exports = {
             return;
         }
 
-        try {
-            thingy = uwu(message.replace('ix!uwu ', '')).replace(/\u00a7/g, '');
-        } catch (error) {
-            thingy = 'w-wha?';
-            console.log(error);
-        }
+        const text = uwu(message.replace(/[\u0000-\u001f\u007f§]/g, ''));
 
-        client.chat('&r', thingy);
+        client.chat('&r', text);
     }
 };
