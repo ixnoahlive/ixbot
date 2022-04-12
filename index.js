@@ -76,6 +76,7 @@ client.on("login", () => {
     }, 1000);
         client.on('player_join', function(player) {
         if (!cmdoff) return;
+        if (!config.welcomepeople) return;
         client.chat(cmdgreet[Math.floor(Math.random() * cmdgreet.length)].replace('[player]', player.name))
     });
 })
