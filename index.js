@@ -41,16 +41,12 @@ client.on("parsed_chat", (message, uuid) => {
         client.chat(`@${name[2]} Make sure to read /rules and enjoy your stay!`)
     }*/
     cmdoff = true
-    if (!message
-        .replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /i, '')
-        .replace(/§+[a-z]|§+[0-9]/i, '')
-        .startsWith("ix!"))
-        {return}
+    let lovely = message.replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /, '').replace(/§+[A-z]|§+[0-9]/, '')
+    if (!lovely.startsWith("ix!")) {return}
     
     command = message.replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /i, '')
     .replace(/§+[a-z]|§+[0-9]/i, '').split(' ')
     command = command[0].replace('ix!','')
-    let lovely = message.replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /, '').replace(/§+[A-z]|§+[0-9]/, '')
 
     if (publiccommands.hasOwnProperty(command)) {
         //if (uuid=="0000000000000000000000000000000" && publiccommands[command].access=="ingame") {client.chat('This command is unavailable for Discord users.');return}
