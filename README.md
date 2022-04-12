@@ -9,6 +9,7 @@ There currently aren't any plans for an official executable or release, so you w
 ### Dependencies
 
 - node minecraft protocol
+- prismarine
 - kumcraft (not publically available, mineflayer can be used as alternative however it is not guaranteed to be compatible.)
 
 ## Usage
