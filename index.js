@@ -36,13 +36,10 @@ client.on("parsed_chat", (message, uuid) => {
     // Checks if commands are off, if the message is from the bot, and if it doesnt contains the prefix. If any is met it will return.
     if (!cmdoff || uuid=="58583751-5da7-46fa-834b-1e82c75295fb" || !message.includes(config.prefix)) return;
     if (config.blacklist.includes(uuid)) { client.chat(`/msg ${client.players[uuid].name} You are blacklisted.`);return }
-    /*if ( uuid.replace('-', '') == "0000000000000000000000000000000" && message.startsWith('§dWelcome ') ) {
-        let name = message.split(' ')
-        client.chat(`@${name[2]} Make sure to read /rules and enjoy your stay!`)
-    }*/
     cmdoff = true
     let lovely = message.replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /, '').replace(/§+[A-z]|§+[0-9]/, '')
-    if (!lovely.startsWith("ix!")) {return}
+    if (!lovely.startsWith("ix!")) return
+
     
     command = message.replace(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» /i, '')
     .replace(/§+[a-z]|§+[0-9]/i, '').split(' ')
