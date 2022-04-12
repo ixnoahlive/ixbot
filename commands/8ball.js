@@ -3,7 +3,7 @@ const cmd8ball = ["It is certain.", "It is decidedly so.", "Without a doubt.", "
 module.exports = {
     name: "8ball",
     access: "public",
-    execute(message, uuid, client) {
+    execute(client, args, uuid) {
         client.chat(`You shake the magic 8ball... it answers: ${cmd8ball[Math.floor(Math.random() * cmd8ball.length)]}`);
     }
 };

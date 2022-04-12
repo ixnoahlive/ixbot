@@ -1,22 +1,26 @@
+const { clean } = require('../utils');
+
 module.exports = {
     name: "rate",
     access: "ingame",
-    execute(message, uuid, client) {
-        switch (message) {
+    execute(client, args, uuid) {
+
+        let thing2rate;
+
+        switch (args[0]) {
             case "you":
-                var thing2rate = "myself";
+                thing2rate = "myself";
                 break;
             case "me":
-                var thing2rate = "you";
+                thing2rate = "you";
                 break;
             default:
-                var thing2rate = message.replace('ix!rate ', '');
+                thing2rate = args.join(' ');
                 break;
         }
-        if (!thing2rate.length < 1) {
-            client.chat('Enter something to rate!');
-            return;
-        }
-        client.chat(`I rate ${thing2rate} ${Math.floor(Math.random() * 6)}/5 stars!`);
+
+        if (!thing2rate.length < 1) return client.chat('Enter something to rate!');
+        
+        client.chat(`I rate ${clean(thing2rate)} ${Math.floor(Math.random() * 6)}/5 stars!`);
     }
 };

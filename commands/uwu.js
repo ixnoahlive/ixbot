@@ -1,3 +1,4 @@
+const { clean } = require('../utils');
 
 const actions = ["*blushes*", "*whispers to self*", "*cries*", "*screams*", "*sweats*", "*twerks*", "*runs away*", "*screeches*", "*walks away*", "*sees bulge*", "*looks at you*", "*notices buldge*", "*starts twerking*", "*huggles tightly*", "*boops your nose*",];
 const faces = ["(・`ω´・)", ";;w;;", "OwO", "UwU", ">w<", "^w^", "ÚwÚ", "^-^", " :3", " x3",];
@@ -14,14 +15,10 @@ function uwu(text) {
 module.exports = {
     name: "uwu",
     access: "ingame",
-    execute(message, uuid, client) {
+    execute(client, args, uuid) {
+        if (args.length === 0) return client.chat('Enter something to uwu!');
 
-        if (message == "ix!uwu") {
-            client.chat("Enter something to uwu!");
-            return;
-        }
-
-        const text = uwu(message.replace(/[\u0000-\u001f\u007f§]/g, ''));
+        const text = uwu(clean(args.join(' ')));
 
         client.chat('&r', text);
     }
