@@ -4,19 +4,19 @@ module.exports = {
     execute(message, uuid, client) {
         switch (message) {
             case "you":
-                var thing2rate = "myself"
+                var thing2rate = "myself";
                 break;
             case "me":
-                var thing2rate = "you"
+                var thing2rate = "you";
                 break;
             default:
-                var thing2rate = message.replace('ix!rate ', '')
+                var thing2rate = message.replace('ix!rate ', '');
                 break;
         }
         if (!thing2rate.length < 1) {
             client.chat('Enter something to rate!');
-            return
+            return;
         }
-        client.chat(`I rate ${thing2rate} ${Math.floor(Math.random() * 6)}/5 stars!`)
+        client.chat(`I rate ${thing2rate} ${Math.floor(Math.random() * 6)}/5 stars!`);
     }
 };

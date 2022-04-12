@@ -4,8 +4,8 @@ module.exports = {
     execute(message, uuid, client) {
         if (!client.players[uuid]) {
             client.chat("You aren't ingame!");
-            return
+            return;
         }
-        client.chat(`Pong! Your ping is ${client.players[uuid].ping}ms!`)
+        client.chat(`Pong! Your ping is ${client.players[uuid].ping}ms!`);
     }
 };
