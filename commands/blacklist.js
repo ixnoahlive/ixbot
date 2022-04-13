@@ -9,8 +9,8 @@ module.exports = {
     execute(client, args, uuid) {
         if (args) {
             config.blacklist.push(clean(args[0]))
-            fs.writeFileSync('../resources/blacklist.json', JSON.stringify(config))
-            path.join(__dirname, '..', 'resources/blacklist.json')
+            fs.writeFileSync('../config.json', JSON.stringify(config))
+            path.join(__dirname, '..', 'config.json')
             client.chat(`&a${args[0]}&r has been added to the blacklist.`)
             return
         }
