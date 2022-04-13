@@ -1,9 +1,15 @@
 {
-    "prefix": "ix!",
+    "prefix":"ix!",
     "options": {
-        "welcomepeople": false
+        "welcomepeople": false,
+        "bridge": true
     },
-    "blacklist": [
-        "e8c075c1-9916-4b97-a5e8-5f62a58b3579"
+    "blacklist":[
+            "e8c075c1-9916-4b97-a5e8-5f62a58b3579"
+    ],
+    "staff":
+            ["58583751-5da7-46fa-834b-1e82c75295fb",
+                "f5ed01cd-3651-48af-99fc-d21a034583c7",
+                "36562c76-e61b-4461-8e53-0dbaf7025f1b"
     ]
 }

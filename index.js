@@ -23,8 +23,8 @@ for (const file of commandsdir) {
 
 
 client.on('login', () => {
-    client.chat('/me &bis currently a &6bot&b. Type &aix!help&b for help.');
-    client.chat('/tag set &8[&eBot&8]');
+    //client.chat('/me &bis currently a &6bot&b. Type &aix!help&b for help.');
+    //client.chat('/tag set &8[&eBot&8]');
 
     client.on('player_join_late', function (player) { // If this event doesn't fire, update your Kumcraft version.
         if (!config.welcomepeople) return;
@@ -39,8 +39,7 @@ client.on('parsed_chat', (message, uuid) => {
     if (!matches) return; // Couldn't parse chat message. Likely not a player chat.
 
     const username = matches[1];
-    const message = matches[2];
-
+    message = matches[2];
     if (!message.startsWith(config.prefix)) return;
     if (config.blacklist.includes(uuid)) return client.chat(`/msg ${uuid} You are blacklisted.`); // Both Essentials' and TotalFreedom's /tell command accept UUIDs.
 
@@ -48,6 +47,10 @@ client.on('parsed_chat', (message, uuid) => {
     const command = message.split(' ')[0].substring(config.prefix.length);
 
     if (!publiccommands[command]) return;
+    if (publiccommands[command].access=="staff") {
+        if (!config.staff.includes(uuid)) {client.chat(`/msg ${client.players[uuid]} No access!`);return}
+        publiccommands[command].execute(client, args, uuid);
+    }
     publiccommands[command].execute(client, args, uuid);
 });
 
@@ -56,5 +59,9 @@ client.on('parsed_chat_ansi', console.log.bind(this, `[CHAT]`));
 
 process.stdin.on('data', function (data) {
     const str = data.toString();
+    if (str.startsWith('>>>')) {
+        eval(str.replace('>>>',''))
+        return
+    }
     client.chat(str.replace(/[\r\n]/g, ''));
 });

@@ -1,5 +1,5 @@
 const fs = require('fs')
-const yomama = JSON.parse(fs.readFileSync('../resources/yomama.json'))
+const yomama = JSON.parse(fs.readFileSync('./resources/yomama.json'))
 
 module.exports = {
     name: 'yomama',
