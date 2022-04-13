@@ -26,7 +26,7 @@ client.on('login', () => {
     client.chat('/me &bis currently a &6bot&b. Type &aix!help&b for help.');
     client.chat('/tag set &8[&eBot&8]');
 
-    client.on('player_join', function (player) {
+    client.on('player_join_late', function (player) { // If this event doesn't fire, update your Kumcraft version.
         if (!config.welcomepeople) return;
         client.chat(cmdgreet[Math.floor(Math.random() * cmdgreet.length)].replace('[player]', player.name));
     });
