@@ -10,7 +10,7 @@ There currently aren't any plans for an official executable or release, so you w
 
 ### Dependencies
 
-- node minecraft protocol
+- 
 - prismarine
 - kumcraft (not publically available, mineflayer can be used as alternative however it is not guaranteed to be compatible.)
 
@@ -29,8 +29,8 @@ You can use the commands folder to make a command as a js file using this templa
 ```js
 module.exports = {
     name: "mycommand", // The name of your command.
-    access: "public", // This currently does not do anything, but it is planned to be given functionality.
-    execute(message, uuid, client){
+    access: "public", // public: anyone can use, ingame: only people with a valid uuid can use, staff: only staff in config.json can use
+    execute(client, args, uuid){
         // Put code here to execute.
     }
 };
