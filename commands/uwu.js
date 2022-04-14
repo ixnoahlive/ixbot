@@ -9,7 +9,10 @@ function uwu(text) {
         .replace(/(?:r|l)/g, 'w')
         .replace(/(?:R|L)/g, 'W')
         .replace(/ove/g, 'uv')
-        .replace(/ome/g, 'um') + ' ' + ending;
+        .replace(/ome/g, 'um') 
+        .replace(/na/g, 'nya')
+        + ' ' + ending;
+        
 }
 
 module.exports = {

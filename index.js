@@ -26,11 +26,15 @@ client.on('login', () => {
     //client.chat('/me &bis currently a &6bot&b. Type &aix!help&b for help.');
     //client.chat('/tag set &8[&eBot&8]');
 
+    if (config.options.tponjoin == true) client.chat(`/tp ${config.options.tponjoincoords}`)
+
     client.on('player_join_late', function (player) { // If this event doesn't fire, update your Kumcraft version.
         if (!config.welcomepeople) return;
         client.chat(cmdgreet[Math.floor(Math.random() * cmdgreet.length)].replace('[player]', player.name));
     });
 });
+
+
 
 client.on('parsed_chat', (message, uuid) => {
     if (uuid === client._client.uuid) return; // Checks if the message is from the bot
@@ -50,9 +54,11 @@ client.on('parsed_chat', (message, uuid) => {
     if (publiccommands[command].access=="staff") {
         if (!config.staff.includes(uuid)) {client.chat(`/msg ${client.players[uuid]} No access!`);return}
         publiccommands[command].execute(client, args, uuid);
+        return
     }
     publiccommands[command].execute(client, args, uuid);
 });
+
 
 
 client.on('parsed_chat_ansi', console.log.bind(this, `[CHAT]`));
