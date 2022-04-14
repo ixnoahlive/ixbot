@@ -10,9 +10,10 @@ There currently aren't any plans for an official executable or release, so you w
 
 ### Dependencies
 
-- 
-- prismarine
-- kumcraft (not publically available, mineflayer can be used as alternative however it is not guaranteed to be compatible.)
+- Node Minecraft Protocol
+- Vec3
+- Prismarine
+- Kumcraft
 
 ## Usage
 
