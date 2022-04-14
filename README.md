@@ -37,5 +37,12 @@ module.exports = {
 };
 ```
 
+Start the bot using startwindows.bat or start.sh.
+
+You can also use Node, as seen below.
+```
+node index.js
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
