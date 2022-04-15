@@ -11,6 +11,7 @@ function uwu(text) {
         .replace(/ove/g, 'uv')
         .replace(/ome/g, 'um') 
         .replace(/na/g, 'nya')
+        .replace('you','uwu')
         + ' ' + ending;
         
 }

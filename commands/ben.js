@@ -1,4 +1,5 @@
 const responses = ["*hangs up*","Blehhh!","Yes","No","Hohoho!","SPECIAL1"]
+const { clean } = require('../utils');
 
 function mock (input) {
     var res = "";
@@ -13,6 +14,6 @@ module.exports = {
     access: 'public',
     execute(client, args, uuid) {
         if (args.length === 0) {client.chat('Ask Ben something!');return;}
-        client.chat(responses[Math.floor(Math.random() * responses.length)].replace('SPECIAL1', mock(args.join(' '))))
+        client.chat(responses[Math.floor(Math.random() * responses.length)].replace('SPECIAL1', clean(mock(args.join(' ')))))
     }
 };

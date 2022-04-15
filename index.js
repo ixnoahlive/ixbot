@@ -14,6 +14,8 @@ const client = kc.createClient({
     auth: 'microsoft'
 });
 
+
+
 let publiccommands = {};
 
 for (const file of commandsdir) {
