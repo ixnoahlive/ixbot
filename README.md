@@ -44,5 +44,10 @@ You can also use Node, as seen below.
 node index.js
 ```
 
+## To-Do
+- [ ] Parse & Support Discord users to run commands
+- [ ] Log messages to Discord channel
+- [ ] Proper public webpage with stuff like help & other info
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
