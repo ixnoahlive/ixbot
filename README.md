@@ -46,6 +46,7 @@ node index.js
 
 ## To-Do
 - [ ] Parse & Support Discord users to run commands
+- [ ] Command Aliasses
 - [ ] Log messages to Discord channel
 - [ ] Proper public webpage with stuff like help & other info
 
