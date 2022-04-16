@@ -1,5 +1,5 @@
 :loop
 node index.js
 echo [BOT] Bot restarting...
-timeout /t 5
+timeout /t 2
 goto loop

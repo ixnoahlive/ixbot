@@ -5,6 +5,6 @@ module.exports = {
     access: 'public',
     execute(client, args, uuid) {
         const commands = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-        client.chat(`Commands: ${commands.join(', ').replace(/\.js/g, '')}`);
+        client.chat(`Commands: &7${commands.join(', ').replace(/\.js/g, '')}`);
     }
 };

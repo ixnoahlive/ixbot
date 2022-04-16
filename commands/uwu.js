@@ -6,6 +6,7 @@ const faces = ['(・`ω´・)', ';;w;;', 'OwO', 'UwU', '>w<', '^w^', 'ÚwÚ', '^
 function uwu(text) {
     var ending = `${actions[Math.floor(Math.random() * actions.length)] + ' ' + faces[Math.floor(Math.random() * faces.length)]}`;
     return text
+        .toLowerCase()
         .replace(/(?:r|l)/g, 'w')
         .replace(/(?:R|L)/g, 'W')
         .replace(/ove/g, 'uv')
