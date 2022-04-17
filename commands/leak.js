@@ -1,6 +1,6 @@
-const passwords = ["hunter2","12345678","IamABigFemboyThighEnjoyer","FreeRobux","ixNoahIsCool","YouCantHackMe","password","wordpass","markbyronismydaddy","ottothecat","imgayandnobodyknows","erinisanegirl","nocom","qwertyuiop","football","babyyodabestmeme","dreamstansarecool","access","admin","welcome","trustno1","No password"]
+const { clean } = require('../utils');
 
-const { clean } = require('../utils.js')
+const passwords = ["hunter2","12345678","IamABigFemboyThighEnjoyer","FreeRobux","ixNoahIsCool","YouCantHackMe","password","wordpass","markbyronismydaddy","ottothecat","imgayandnobodyknows","erinisanegirl","nocom","qwertyuiop","football","babyyodabestmeme","dreamstansarecool","access","admin","welcome","trustno1","No password"]
 
 module.exports = {
     name: 'leak',
