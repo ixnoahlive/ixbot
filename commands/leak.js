@@ -7,6 +7,6 @@ module.exports = {
     access: 'public',
     execute(client, args, uuid) {
         if (args.length === 0) return client.chat(`ENTER SOMEONE TO LEAK/DOXX!!!! (UNPATCHED)`);
-        client.chat(`EPIC LEAK [NAME: ${clean(args)}, COORDINATES: ${Math.floor(Math.random() * 694201337)} ${Math.floor(Math.random() * 255)} ${Math.floor(Math.random() * 694201337)}, PASSWORD: ${passwords[Math.floor(Math.random() * passwords.length)]}, IP: ${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}]`)
+        client.chat(`EPIC LEAK [NAME: ${clean(args[0])}, COORDINATES: ${Math.floor(Math.random() * 694201337)} ${Math.floor(Math.random() * 255)} ${Math.floor(Math.random() * 694201337)}, PASSWORD: ${passwords[Math.floor(Math.random() * passwords.length)]}, IP: ${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}]`)
     }
 };
