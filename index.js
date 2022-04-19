@@ -1,6 +1,6 @@
-const fs = require('fs');
+const { fs, watch, existsSync } = require('fs');
 const kc = require('./kc');
-const config = require('./config.json');
+var config = require('./config.json'); // Changed to var since config will not be a constant when updated from the fs.
 const cmdgreet = require('./resources/greetings.json');
 const credentials = require('./credentials.json');
 const cooldownList = new Set();
@@ -15,7 +15,23 @@ const client = kc.createClient({
     auth: 'microsoft'
 });
 
+function reaquire(module) {
+  delete require.cache[require.resolve(module)];
+  return require(module);
+}
 
+watch(join(__dirname), (_, filename) => {
+  if(existsSync(join(__dirname, filename))) {
+    switch(filename){ // Check the modified file.
+       case "config.json":
+       reaquire("./" + filename)
+        setTimeout(()=>{
+        config = require("./" + filename); // Wait and reassign the value (this will be very quick)
+        }, 150);
+        break;
+    }
+  }
+}
 
 let publiccommands = {};
 
