@@ -1,4 +1,4 @@
-const { fs, watch, existsSync } = require('fs');
+const fs = require('fs');
 const kc = require('./kc');
 var config = require('./config.json'); // Changed to var since config will not be a constant when updated from the fs.
 const cmdgreet = require('./resources/greetings.json');
@@ -20,8 +20,8 @@ function reaquire(module) {
   return require(module);
 }
 
-watch(join(__dirname), (_, filename) => {
-  if(existsSync(join(__dirname, filename))) {
+fs.watch(join(__dirname), (_, filename) => {
+  if(fs.existsSync(join(__dirname, filename))) {
     switch(filename){ // Check the modified file.
        case "config.json":
        reaquire("./" + filename)
