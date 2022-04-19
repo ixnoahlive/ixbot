@@ -3,6 +3,7 @@ const kc = require('./kc');
 const config = require('./config.json');
 const cmdgreet = require('./resources/greetings.json');
 const credentials = require('./credentials.json');
+const cooldownList = new Set();
 
 const commandsdir = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -58,6 +59,17 @@ client.on('parsed_chat', (message, uuid) => {
         publiccommands[command].execute(client, args, uuid);
         return
     }
+     if(!config.staff.includes(uuid) && cooldownList.has(uuid)) {
+                client.chat(`/msg ${uuid} You are on a cooldown!`); // Message the player that they are on a cooldown
+                return;
+              } else {
+                  cooldownList.add(uuid); // Add the player's uuid to the cooldown list
+                  setTimeout(() => {
+                    cooldownList.delete(uuid); // Remove the players uuid from the cooldown list after the period
+                    return;
+                  }, 1500);
+              }
+    
     publiccommands[command].execute(client, args, uuid);
 });
 
