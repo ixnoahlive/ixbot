@@ -15,6 +15,7 @@ module.exports = {
                 thing2rate = 'myself';
                 rating = 5
                 break;
+            case 'myself':
             case 'me':
                 thing2rate = 'you';
                 break;
