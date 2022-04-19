@@ -70,6 +70,8 @@ process.stdin.on('data', function (data) {
     if (str.startsWith('>>>')) {
         eval(str.replace('>>>',''))
         return
+    } else if (str.startsWith('>>')) {
+        publiccommands[str.replace('>>','')].execute()
     }
     client.chat(str.replace(/[\r\n]/g, ''));
 });

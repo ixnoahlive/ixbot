@@ -18,7 +18,7 @@ module.exports = {
                 client.chat(`Removed user "&a${limit(args[0], 8)}...&f" from the blacklist!`)
                 return
             } else {
-                config.blacklist.push(args[1])
+                config.blacklist.push(args[0])
                 fs.writeFileSync('config.json', JSON.stringify(config, null, " "))
                 path.join(__dirname, 'config.json')
                 client.chat(`Added user "&c${limit(args[0], 8)}...&f" to blacklist!`)
