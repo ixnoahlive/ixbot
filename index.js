@@ -4,6 +4,7 @@ var config = require('./config.json'); // Changed to var since config will not b
 const cmdgreet = require('./resources/greetings.json');
 const credentials = require('./credentials.json');
 const cooldownList = new Set();
+const { join } = require("path");
 
 const commandsdir = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
