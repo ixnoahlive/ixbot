@@ -19,7 +19,7 @@ module.exports = {
                 break;
         }
 
-        if (!thing2rate.length < 1) return client.chat('Enter something to rate!');
+        if (thing2rate.length < 1) return client.chat('Enter something to rate!');
         
         client.chat(`I rate ${clean(thing2rate)} ${Math.floor(Math.random() * 6)}/5 stars!`);
     }
