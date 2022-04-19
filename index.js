@@ -31,7 +31,7 @@ watch(join(__dirname), (_, filename) => {
         break;
     }
   }
-}
+});
 
 let publiccommands = {};
 
