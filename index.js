@@ -41,7 +41,7 @@ client.on('login', () => {
 client.on('parsed_chat', (message, uuid) => {
     if (uuid === client._client.uuid) return; // Checks if the message is from the bot
 
-    const matches = message.match(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» (?:§(?:#[a-fA-F0-9]{6}|.))+(.+)/); //tfw i have to use REGEX to parse chat messages (I blame totalfreedom)
+    const matches = message.match(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» (?:§(?:#[a-fA-F0-9]{6}|.)| )+(.+)/); //tfw i have to use REGEX to parse chat messages (I blame totalfreedom)
     if (!matches) return; // Couldn't parse chat message. Likely not a player chat.
 
     const username = matches[1];
