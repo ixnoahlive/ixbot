@@ -5,9 +5,9 @@ module.exports = {
     access: 'ingame',
     execute(client, args, uuid) {
 
+        if (args.length < 1) return client.chat('Enter something to rate!');
         let thing2rate;
         let rating = Math.floor(Math.random() * 6)
-
         switch (args[0].toLowerCase()) {
             case 'ixalt':
             case 'ixbot':
@@ -26,8 +26,6 @@ module.exports = {
                 thing2rate = args.join(' ');
                 break;
         }
-
-        if (thing2rate.length < 1) return client.chat('Enter something to rate!');
         
         client.chat(`I rate ${clean(thing2rate)} ${rating}/5 stars!`);
     }
