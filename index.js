@@ -25,10 +25,11 @@ fs.watch(join(__dirname), (_, filename) => {
   if(fs.existsSync(join(__dirname, filename))) {
     switch(filename){ // Check the modified file.
        case "config.json":
-       reaquire("./" + filename)
-        setTimeout(()=>{
-        config = require("./" + filename); // Wait and reassign the value (this will be very quick)
-        }, 150);
+            reaquire("./" + filename)
+                setTimeout(()=>{
+                config = require("./" + filename); // Wait and reassign the value (this will be very quick)
+                }, 150);
+                console.log('[BOT] Refreshed ' + filename)
         break;
     }
   }
@@ -49,7 +50,7 @@ client.on('login', () => {
     if (config.options.tponjoin == true) client.chat(`/tp ${config.options.tponjoincoords}`)
 
     client.on('player_join_late', function (player) { // If this event doesn't fire, update your Kumcraft version.
-        if (!config.welcomepeople) return;
+        if (!config.options.welcomepeople) return;
         client.chat(cmdgreet[Math.floor(Math.random() * cmdgreet.length)].replace('[player]', player.name));
     });
 });
@@ -77,16 +78,16 @@ client.on('parsed_chat', (message, uuid) => {
         return
     }
      if(!config.staff.includes(uuid) && cooldownList.has(uuid)) {
-                client.chat(`/msg ${uuid} You are on a cooldown!`); // Message the player that they are on a cooldown
+                client.chat(`/msg ${uuid} The bot is on cooldown!`); // Message the player that they are on a cooldown
                 return;
               } else {
                   cooldownList.add(uuid); // Add the player's uuid to the cooldown list
                   setTimeout(() => {
                     cooldownList.delete(uuid); // Remove the players uuid from the cooldown list after the period
                     return;
-                  }, 1500);
+                  }, config.options.cooldown);
               }
-    
+              if (config.disabled.includes(command)) {return client.chat(`/w ${uuid} &cHey! &7This command is disabled at the moment.`)}
     publiccommands[command].execute(client, args, uuid);
 });
 
@@ -100,7 +101,9 @@ process.stdin.on('data', function (data) {
         eval(str.replace('>>>',''))
         return
     } else if (str.startsWith('>>')) {
-        publiccommands[str.replace('>>','')].execute()
+        let args = str.split(' ').slice(1);
+        let uuid = client._client.uuid
+        publiccommands[str.replace('>>','')].execute(client, args, uuid)
     }
     client.chat(str.replace(/[\r\n]/g, ''));
 });

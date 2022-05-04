@@ -22,6 +22,11 @@ module.exports = {
             case 'ixnoah':
             case 'noah':
                 rating = 5
+            break;
+            case 'stevennl':
+            case 'steven':
+            case 'stevennl2000':
+                rating = "∞"
             default:
                 thing2rate = args.join(' ');
                 break;

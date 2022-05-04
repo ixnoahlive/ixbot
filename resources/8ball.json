@@ -1,0 +1,46 @@
+{
+    "yes": [
+        "It is certain.",
+        "It is decidedly so.",
+        "Without a doubt.",
+        "Yes, definitely.",
+        "You may rely on it.",
+        "As I see it, yes.",
+        "Most likely.",
+        "Outlook good.",
+        "Yes.",
+        "Signs point to yes.",
+        "yeah lol",
+        "Mhm",
+        "Yep",
+        "uhhhmm. yes!",
+        "Yes",
+        "Probably yes."
+    ],
+    "no": [
+        "Don't count on it.",
+        "My reply is no.",
+        "My sources say no.",
+        "Outlook not so good.",
+        "Very doubtful.",
+        "Nope",
+        "Nah",
+        "Never",
+        "OF COURSE NOT!",
+        "No, why would you ask?",
+        "No"
+    ],
+    "maybe": [
+        "Reply hazy, try again.",
+        "Ask again later.",
+        "Better not tell you now.",
+        "Cannot predict now.",
+        "Concentrate and ask again.",
+        "idk",
+        "repeat pls?",
+        "Whoops wasn't paying attention.",
+        "I forgor :skull:",
+        "Maybe",
+        "no clue"
+    ]
+}
