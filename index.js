@@ -105,5 +105,16 @@ process.stdin.on('data', function (data) {
         let uuid = client._client.uuid
         publiccommands[str.replace('>>','')].execute(client, args, uuid)
     }
+    if (str.startsWith("$nocom")) {
+        client.teleport(client.entity.position.offset(5, 0, 5))
+        setTimeout(() => {
+            client.chat("/near 65000000")
+        }, 500)
+        client.teleport(client.entity.position.offset(-5, 0, -5))
+        setTimeout(() => {
+            client.chat("/near 65000000")
+        }, 500)
+        return
+    }
     client.chat(str.replace(/[\r\n]/g, ''));
 });
