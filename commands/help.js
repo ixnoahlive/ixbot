@@ -1,14 +1,16 @@
 const fs = require('fs');
+const config = require('../config.json')
 module.exports = {
     name: 'help',
     access: 'public',
     execute(client, args, uuid) {
         const commandsdir = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-        let publiccommands = {};
+        let publiccommands = [];
         commandsdir.forEach(file => {
             const command = require(`./${file}`);
-            if (command.access!=="staff") publiccommands[command.name] = command;
+            if (config.staff.includes(uuid) && command.access=="staff") { publiccommands.push(command.access=="staff" ? `&c${command.name}` : command.name) } else if (command.access!=="staff") { publiccommands.push(command.name) }
         })
-        client.chat(`Commands: &7${publiccommands.join(', ').replace(/.js/, '')}`)
+        publiccommands.splice(publiccommands.indexOf(undefined))
+        client.chat(`Commands: &7${publiccommands.sort().join(', ').replace(/.js/, '')}`)
     }
 };

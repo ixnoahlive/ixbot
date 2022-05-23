@@ -70,7 +70,7 @@ client.on('parsed_chat', (message, uuid) => {
 
     const args = message.split(' ').slice(1);
     const command = message.split(' ')[0].substring(config.prefix.length);
-
+    if (command=="__proto__" || command=="undefined") return `[INFO] ${username} tried running crash command.`
     if (!publiccommands[command]) return;
     if (publiccommands[command].access=="staff") {
         if (!config.staff.includes(uuid)) {client.chat(`/msg ${client.players[uuid]} No access!`);return}
