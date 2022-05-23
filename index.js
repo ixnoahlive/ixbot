@@ -29,7 +29,7 @@ fs.watch(join(__dirname), (_, filename) => {
                 setTimeout(()=>{
                 config = require("./" + filename); // Wait and reassign the value (this will be very quick)
                 }, 150);
-                console.log('[BOT] Refreshed ' + filename)
+                console.log('[INFO] Refreshed ' + filename)
         break;
     }
   }
@@ -87,7 +87,7 @@ client.on('parsed_chat', (message, uuid) => {
                     return;
                   }, config.options.cooldown);
               }
-              if (config.disabled.includes(command)) {return client.chat(`/w ${uuid} &cHey! &7This command is disabled at the moment.`)}
+              //if (config.disabled.includes(command)) {return client.chat(`/w ${uuid} &cHey! &7This command is disabled at the moment.`)}
     publiccommands[command].execute(client, args, uuid);
 });
 
