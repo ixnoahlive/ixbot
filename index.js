@@ -56,13 +56,12 @@ client.on('login', () => {
 });
 
 
-
 client.on('parsed_chat', (message, uuid) => {
     if (uuid === client._client.uuid) return; // Checks if the message is from the bot
 
     const matches = message.match(/^.+ §(?:#[a-fA-F0-9]{6}|.)(.+)§r §8» (?:§(?:#[a-fA-F0-9]{6}|.)| )+(.+)/); //tfw i have to use REGEX to parse chat messages (I blame totalfreedom)
     if (!matches) return; // Couldn't parse chat message. Likely not a player chat.
-
+    if (config.extra.lockdown == true && !config.staff.includes(uuid)) return
     const username = matches[1];
     message = matches[2];
     if (!message.startsWith(config.prefix)) return;
@@ -74,8 +73,12 @@ client.on('parsed_chat', (message, uuid) => {
     if (!publiccommands[command]) return;
     if (publiccommands[command].access=="staff") {
         if (!config.staff.includes(uuid)) {client.chat(`/msg ${client.players[uuid]} No access!`);return}
-        publiccommands[command].execute(client, args, uuid);
-        return
+        return publiccommands[command].execute(client, args, uuid);
+    }
+    if(publiccommands[command].access=="owner") {
+        if (!config.owner.includes(uuid)) {client.chat(`/msg ${client.players[uuid]} No access!`);return}
+        return publiccommands[command].execute(client, args, uuid);
+        
     }
      if(!config.staff.includes(uuid) && cooldownList.has(uuid)) {
                 client.chat(`/msg ${uuid} The bot is on cooldown!`); // Message the player that they are on a cooldown

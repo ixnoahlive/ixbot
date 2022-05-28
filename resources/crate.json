@@ -1,0 +1,3 @@
+[
+    "/give %name% stone 1 {display:{Name:'[{\"text\":\"TEST\",\"color\":\"blue\",\"bold\":true,\"italic\":false},{\"text\":\" Hello\",\"color\":\"white\",\"bold\":false,\"italic\":false}]',Lore:['{\"text\":\"ixBot Item\",\"color\":\"dark_gray\",\"italic\":false}']},HideFlags:2}"
+]

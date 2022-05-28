@@ -7,20 +7,29 @@
   "tponjoincoords": "6737318 252 -3173437",
   "cooldown": 2000
  },
+ "crates": {
+  "nextOpen": 1653749486645
+ },
+ "extra": {
+  "lockdown": false
+ },
+ "owner": [
+  "58583751-5da7-46fa-834b-1e82c75295fb"
+ ],
  "blacklist": [
   "e8c075c1-9916-4b97-a5e8-5f62a58b3579",
   "250f5304-f1bf-4f7c-8d74-d6fc86412b55",
   "430ebda2-04fe-48d4-8e03-c5ce201929e4",
   "0bafcb16-565d-4066-b864-27e2b714efd2",
   "cf82d41f-38af-4e6d-982c-0917757807e5",
-  "dec76328-29ac-43df-a77d-636bc9595ed5",
-  "bcd83c72-ad0f-4671-b363-7a82789fdd39"
+  "dec76328-29ac-43df-a77d-636bc9595ed5"
  ],
  "staff": [
   "58583751-5da7-46fa-834b-1e82c75295fb",
   "f5ed01cd-3651-48af-99fc-d21a034583c7",
   "36562c76-e61b-4461-8e53-0dbaf7025f1b",
   "f97c0d7b-6413-4558-a409-88f09a8f9adb",
-  "a52f1f08-a398-400a-bca4-2b74b81feae6"
+  "a52f1f08-a398-400a-bca4-2b74b81feae6",
+  "d587c328-081d-4580-bc20-5846f7eb3412"
  ]
 }
