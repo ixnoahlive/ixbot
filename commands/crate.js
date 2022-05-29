@@ -1,7 +1,50 @@
 const fs = require('fs')
 const path = require('path')
-const { makeTime } = require('../utils')
+const { makeTime, choose } = require('../utils')
 const crateData = require('../resources/crate.json')
+
+const PouchDB = require('pouchdb');
+var ecodb = new PouchDB('db/economy');
+
+function rollRarity() {
+    var number = Math.floor(Math.random() * 1001)
+    if (number<501) {
+        return "common"
+    } else if (number<701) {
+        return "uncommon"
+    } else if (number<801) {
+        return "rare"
+    } else if (number<976) {
+        return "epic"
+    } else {
+        return "legendary"
+    }
+}
+function rollItem() {
+    let rarity = rollRarity()
+    let iindex = Math.floor(Math.random() * Object.keys(crateData[rarity]).length)
+    return [crateData[rarity][Object.keys(crateData[rarity])[iindex]],rarity,iindex]
+} // What do you mean im lazy?
+
+function rarityColor(rarity) {
+    switch (rarity) {
+        case "uncommon":
+            return "a"    
+        break;
+        case "rare":
+            return "9"
+        break;
+        case "epic":
+            return "5"    
+        break;
+        case "legendary":
+            return "6"    
+        break;
+        default:
+            return "f"
+            break;
+    }
+}
 
 module.exports = {
     name: 'crate',
@@ -9,29 +52,52 @@ module.exports = {
     execute(client, args, uuid) {
         let config = require('../config.json')
         let cmdtime = new Date().getTime()
+
         switch (args[0]) {
+
             case "help":
                 client.chat(`/emsg ${uuid} &9&lCrate Commands: &3help, open, timer`)
             break;
+
             case "timer":
                 client.chat(`Time until crate is available: &7${makeTime(config.crates.nextOpen-cmdtime)=='00:00' ? '&aNow!' : makeTime(config.crates.nextOpen-cmdtime)}`)
             break;
+
             case "open":
-                
-                if (cmdtime>config.crates.nextOpen) {
-                    config.crates.nextOpen = cmdtime+300000
+                if (cmdtime>config.crates.nextOpen || args[1]=="-f" && config.staff.includes(uuid)) {
+                    config.crates.nextOpen = cmdtime+900000
                     fs.writeFileSync('config.json', JSON.stringify(config, null, " "))
                     path.join(__dirname, 'config.json')
-                    client.chat(crateData[Math.floor(Math.random() * crateData.length)].replace("%name%",client.players[uuid].name))
-                    setTimeout(() => client.chat(`&a&lCRATE! &3${client.players[uuid].name}&b opened the crate and got an item!`), 100)
+                    let rolledItem = rollItem()
+                    console.log(rolledItem[0])
+                    ecodb.get(uuid).then((doc) => {
+                        if (doc.inventory.items == undefined) {
+                            doc.inventory.items = Object.new()
+                        } 
+                        if (doc.inventory.items.includes(crateData[rarity][2].constructor.name)) { 
+                            doc.inventory.items[rolledItem[3].constructor.name].amount++
+                         } else {
+                             doc.inventory.items.push(rolledItem[0])
+                         }
+                         ecodb.put(doc)
+                    }).then(() => {
+                        return ecodb.get(uuid)
+                    }).then((doc) => {
+                        console.log(doc)
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                    setTimeout(() => client.chat(`&#73ffcc&lCRATE! &#339cde${client.players[uuid].name}&#e3f4ff opened the crate and got &${rarityColor(rolledItem[1])}&o${rolledItem[0].name}`), 0)
                     
                 } else {
                     client.chat(`The next crate is available in &7${makeTime(config.crates.nextOpen-cmdtime)}`)
                 }
             break;
+
             default:
                 client.chat('&fInvalid argument! Run &7ix!crate help&f for help!')
             break;
+
         }
     }
 };

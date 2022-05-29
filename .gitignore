@@ -10,3 +10,5 @@ test/server_*
 credentials.json
 kc/
 .env
+database
+db

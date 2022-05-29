@@ -121,3 +121,25 @@ process.stdin.on('data', function (data) {
     }
     client.chat(str.replace(/[\r\n]/g, ''));
 });
+// You may remove this if you would rather not handle errors to a discord webhook. You can use it by adding the "webhook" property in credentials.
+const fetch = require('node-fetch')
+process.on('uncaughtException', (error, origin) => {
+    console.log('[ERROR] ', error)
+    return client.chat('&4&lAn error occured!&c Information has been sent to the developer!')
+    /*var params = {
+        embeds: [
+            {
+                "title": "Error occured!",
+                "color": 16715036,
+                "description":`\`\`\`js\n${error}\n\`\`\``
+            }
+        ]
+    }
+    fetch('URL', {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(params)
+    })*/
+})

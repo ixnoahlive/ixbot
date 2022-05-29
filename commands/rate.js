@@ -6,7 +6,7 @@ module.exports = {
     execute(client, args, uuid) {
 
         if (args.length < 1) return client.chat('Enter something to rate!');
-        let thing2rate;
+        let thing2rate = client.players[uuid].name
         let rating = Math.floor(Math.random() * 6)
         switch (args[0].toLowerCase()) {
             case 'ixalt':
@@ -27,6 +27,7 @@ module.exports = {
             case 'steven':
             case 'stevennl2000':
                 rating = "∞"
+                break;
             default:
                 thing2rate = args.join(' ');
                 break;

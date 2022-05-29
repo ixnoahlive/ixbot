@@ -14,6 +14,7 @@ There currently aren't any plans for an official executable or release, so you w
 - Vec3
 - Prismarine
 - Kumcraft
+- sqlite (if you wanna use the economy features)
 
 ## Usage
 

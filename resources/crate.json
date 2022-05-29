@@ -1,3 +1,52 @@
-[
-    "/give %name% stone 1 {display:{Name:'[{\"text\":\"TEST\",\"color\":\"blue\",\"bold\":true,\"italic\":false},{\"text\":\" Hello\",\"color\":\"white\",\"bold\":false,\"italic\":false}]',Lore:['{\"text\":\"ixBot Item\",\"color\":\"dark_gray\",\"italic\":false}']},HideFlags:2}"
-]
+{
+    "common":{
+        "stone":{
+            "name":"Stone",
+            "desc":"It's stone. What do you expect?"
+        },
+        "juicebox":{
+            "name":"Juice Box",
+            "desc":"apple juice better than orange dont @ me"
+        } 
+    },
+    "uncommon":{
+        "yoyo1":{
+            "name":"Yoyo",
+            "desc":"A grey basic yoyo. Works fine."
+        },
+        "pistol":{
+            "name":"Pistol",
+            "desc":"Pistol."
+        }
+    },
+    "rare":{
+        "glitterbomb":{
+            "name":"Glitter Bomb",
+            "desc":"Mark Rober approves"
+        },
+        "stopsign":{
+            "name":"Stop Sign",
+            "desc":"You know you can't just take those, right?"
+        }
+    },
+    "epic":{
+        "portalgun":{
+            "name":"Portal Gun",
+            "desc":"Times used to thwart Evil AI: 3"
+        },
+        "lightsaber":{
+            "name":"Lightsaber",
+            "desc":"(lightsaber noise)"
+        }
+    },
+    "legendary":{
+        "excalibur":{
+            "name":"Excalibur",
+            "desc":"Cool sword, sadly its glued to a rock."
+        },
+        "ixmodinstaller":{
+            "name":"ixMod Installer",
+            "desc":"Install ixmod free 2022 no virus"
+        }
+    }
+}
