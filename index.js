@@ -72,11 +72,11 @@ client.on('parsed_chat', (message, uuid) => {
     if (command=="__proto__" || command=="undefined") return `[INFO] ${username} tried running crash command.`
     if (!publiccommands[command]) return;
     if (publiccommands[command].access=="staff") {
-        if (!config.staff.includes(uuid)) {client.chat(`/msg ${client.players[uuid]} No access!`);return}
+        if (!config.staff.includes(uuid)) {client.chat(`/msg ${uuid} No access!`);return}
         return publiccommands[command].execute(client, args, uuid);
     }
     if(publiccommands[command].access=="owner") {
-        if (!config.owner.includes(uuid)) {client.chat(`/msg ${client.players[uuid]} No access!`);return}
+        if (!config.owner.includes(uuid)) {client.chat(`/msg ${uuid} No access!`);return}
         return publiccommands[command].execute(client, args, uuid);
         
     }
@@ -124,7 +124,7 @@ process.stdin.on('data', function (data) {
 // You may remove this if you would rather not handle errors to a discord webhook. You can use it by adding the "webhook" property in credentials.
 const fetch = require('node-fetch')
 process.on('uncaughtException', (error, origin) => {
-    console.log('[ERROR] ', error)
+    console.log('[ERROR] ', origin, error)
     return client.chat('&4&lAn error occured!&c Information has been sent to the developer!')
     /*var params = {
         embeds: [

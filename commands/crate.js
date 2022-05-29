@@ -3,6 +3,10 @@ const path = require('path')
 const { makeTime, choose } = require('../utils')
 const crateData = require('../resources/crate.json')
 
+////////////////////////////////////////////////////////////////////////////////////
+// If you thought that blacklist.js was bad, get ready for the ride of your life! //
+////////////////////////////////////////////////////////////////////////////////////
+
 const PouchDB = require('pouchdb');
 var ecodb = new PouchDB('db/economy');
 
@@ -30,19 +34,19 @@ function rarityColor(rarity) {
     switch (rarity) {
         case "uncommon":
             return "a"    
-        break;
+
         case "rare":
             return "9"
-        break;
+
         case "epic":
             return "5"    
-        break;
+
         case "legendary":
             return "6"    
-        break;
+  
         default:
             return "f"
-            break;
+// vsc said i could remove the break so i did, who's gonna stop me?
     }
 }
 
@@ -52,7 +56,8 @@ module.exports = {
     execute(client, args, uuid) {
         let config = require('../config.json')
         let cmdtime = new Date().getTime()
-
+        ecodb.get(uuid).then((doc) => console.log(JSON.stringify(doc)))
+        console.log()
         switch (args[0]) {
 
             case "help":
@@ -71,13 +76,14 @@ module.exports = {
                     let rolledItem = rollItem()
                     console.log(rolledItem[0])
                     ecodb.get(uuid).then((doc) => {
-                        if (doc.inventory.items == undefined) {
-                            doc.inventory.items = Object.new()
+                        if (doc.inventory == undefined) {
+                            doc.inventory = new Object
+                            doc.inventory.items = new Object
                         } 
-                        if (doc.inventory.items.includes(crateData[rarity][2].constructor.name)) { 
-                            doc.inventory.items[rolledItem[3].constructor.name].amount++
+                        if (Object.keys(doc.inventory.items).includes(crateData[rolledItem[1]][rolledItem[2]])) { 
+                            doc.inventory.items[crateData[rolledItem[1]][rolledItem[2]]].amount++
                          } else {
-                             doc.inventory.items.push(rolledItem[0])
+                             doc.inventory.items[crateData[rolledItem[1]][rolledItem[2]]] = rolledItem[0]
                          }
                          ecodb.put(doc)
                     }).then(() => {
