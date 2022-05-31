@@ -29,7 +29,7 @@ fs.watch(join(__dirname), (_, filename) => {
                 setTimeout(()=>{
                 config = require("./" + filename); // Wait and reassign the value (this will be very quick)
                 }, 150);
-                console.log('[INFO] Refreshed ' + filename)
+                //console.log('[INFO] Refreshed ' + filename)
         break;
     }
   }
@@ -125,7 +125,7 @@ process.stdin.on('data', function (data) {
 const fetch = require('node-fetch')
 process.on('uncaughtException', (error, origin) => {
     console.log('[ERROR] ', origin, error)
-    return client.chat('&4&lAn error occured!&c Information has been sent to the developer!')
+    client.chat('&4&lAn error occured!&c Information has been sent to the developer!')
     /*var params = {
         embeds: [
             {

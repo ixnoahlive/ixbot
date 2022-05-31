@@ -48,5 +48,21 @@
             "name":"ixMod Installer",
             "desc":"Install ixmod free 2022 no virus"
         }
+    },
+    "exotic": {
+        
+    },
+    "exclusive":{
+        "masterpiece":{
+            "name":"The Masterpiece",
+            "desc":"Awarded for giving a great suggestion to ixBot!"
+        },
+        "granddynamite":{
+            "name":"Grand Dynamite",
+            "desc":"You broke my bot. Great job."
+        }
+    },
+    "limited":{
+
     }
 }
